@@ -27,6 +27,6 @@ public class ClientRequestDto {
 	private int age;  
 	
 	@NotNull(message = ErrorConstant.MANDATORY_FIELD)
-	@ApiModelProperty(value = "Fecha de nacimiento del cliente", required = true, example= "19/07/1993")
+	@ApiModelProperty(value = "Fecha de nacimiento del cliente", required = true, example= "1993-07-19")
 	private Date  dateOfBirth; 
 }

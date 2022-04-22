@@ -18,10 +18,10 @@ public class ClientResponseDto {
 	private String lastName; 
 	@ApiModelProperty(value = "Edad del cliente", required = true, example= "28")
 	private int age;  
-	@ApiModelProperty(value = "Fecha de nacimiento del cliente", required = true, example= "19/07/1993")
+	@ApiModelProperty(value = "Fecha de nacimiento del cliente", required = true, example= "19-07-1993")
 	@JsonFormat(pattern="dd-MM-yyyy") 
 	private Date  dateOfBirth; 
-	@ApiModelProperty(value = "Fecha probable de muerte", required = true, example= "18/09/2064")
+	@ApiModelProperty(value = "Fecha probable de muerte", required = true, example= "18-09-2064")
 	@JsonFormat(pattern="dd-MM-yyyy") 
     @JsonInclude(Include.NON_NULL) 
 	private Date  dateOfDeath; 
