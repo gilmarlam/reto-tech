@@ -10,7 +10,9 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.context.request.WebRequest;
 
+import pe.intercorp.retotech.exceptions.ServiceException;
 import pe.intercorp.retotech.rest.response.ResponseWrapper;
  
 
@@ -36,6 +38,17 @@ public class BaseController {
 
 		responseWrapper.setErrorCode(String.valueOf(HttpStatus.BAD_REQUEST.value()));
 		responseWrapper.setErrorMessage(errorMessage.toString().trim());
+
+		return responseWrapper;
+	}
+	
+	@ExceptionHandler(ServiceException.class)
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	public ResponseWrapper<String> serviceInternalException(ServiceException serviceException, WebRequest request) {
+		ResponseWrapper<String> responseWrapper = new ResponseWrapper<String>();
+
+		responseWrapper.setErrorCode(serviceException.getErrorCode());
+		responseWrapper.setErrorMessage(serviceException.getMessage());
 
 		return responseWrapper;
 	}

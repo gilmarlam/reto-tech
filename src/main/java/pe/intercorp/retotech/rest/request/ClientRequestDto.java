@@ -28,6 +28,5 @@ public class ClientRequestDto {
 	
 	@NotNull(message = ErrorConstant.MANDATORY_FIELD)
 	@ApiModelProperty(value = "Fecha de nacimiento del cliente", required = true, example= "19/07/1993")
-	@Pattern(regexp = RegExpConstant.DATE_REGEXP, message = ErrorConstant.INVALID_MESSAGE)
 	private Date  dateOfBirth; 
 }

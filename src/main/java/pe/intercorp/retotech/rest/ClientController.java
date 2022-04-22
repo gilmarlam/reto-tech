@@ -1,5 +1,7 @@
 package pe.intercorp.retotech.rest;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import pe.intercorp.retotech.exceptions.ServiceException;
 import pe.intercorp.retotech.rest.request.ClientRequestDto;
+import pe.intercorp.retotech.rest.response.ClientResponseDto;
 import pe.intercorp.retotech.service.ClientService;
 
 @Api( tags = "MS Client")
@@ -26,19 +30,19 @@ public class ClientController extends BaseController {
 
 	@ApiOperation(value = "Creacion del cliente")
 	@PostMapping("/creacliente")
-	public ResponseEntity<?> creaCliente(@RequestBody @Valid ClientRequestDto request) {
+	public ResponseEntity<?> creaCliente(@RequestBody @Valid ClientRequestDto request) throws ServiceException {
 		return ResponseEntity.ok().body(clientService.create(request));
 	}
 	
 	@ApiOperation(value = "KPI de clientes")
 	@GetMapping("/kpideclientes")
-	public ResponseEntity<?> kpiClientes() {
+	public ResponseEntity<?> kpiClientes() throws ServiceException {
 		return ResponseEntity.ok().body(clientService.getKpi());
 	}
 	
 	@ApiOperation(value = "Listado de clientes")
 	@GetMapping("/listclientes")
-	public ResponseEntity<?> list() {
+	public ResponseEntity<List<ClientResponseDto>> list() throws ServiceException {
 		return ResponseEntity.ok().body(clientService.list());
 	}
 
