@@ -17,7 +17,7 @@ public class Constants {
 			"gilmarlamt@gmail.com");
 	
 	public static final ApiInfo DEFAULT_API_INFO = new ApiInfo(
-			"Client API Documentation", 
+			"Client MS Documentation", 
 			"Swagger contract RESTful Web Service API", 
 			"v1", 
 			"urn:pe.intercorp.retotech",

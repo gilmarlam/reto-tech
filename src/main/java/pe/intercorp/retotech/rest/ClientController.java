@@ -12,10 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import pe.intercorp.retotech.rest.request.ClientRequestDto;
 import pe.intercorp.retotech.service.ClientService;
 
-@Api( tags = "API Client")
+@Api( tags = "MS Client")
 @RestController
 @RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ClientController extends BaseController {
@@ -23,16 +24,19 @@ public class ClientController extends BaseController {
 	@Autowired
 	private ClientService clientService;
 
+	@ApiOperation(value = "Creacion del cliente")
 	@PostMapping("/creacliente")
 	public ResponseEntity<?> creaCliente(@RequestBody @Valid ClientRequestDto request) {
 		return ResponseEntity.ok().body(clientService.create(request));
 	}
 	
+	@ApiOperation(value = "KPI de clientes")
 	@GetMapping("/kpideclientes")
 	public ResponseEntity<?> kpiClientes() {
 		return ResponseEntity.ok().body(clientService.getKpi());
 	}
 	
+	@ApiOperation(value = "Listado de clientes")
 	@GetMapping("/listclientes")
 	public ResponseEntity<?> list() {
 		return ResponseEntity.ok().body(clientService.list());
